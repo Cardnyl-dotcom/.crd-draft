@@ -1,0 +1,16 @@
+# Initialize
+blockchain = AudioBlockchain()
+encryption_manager = EncryptionManager()
+processor = AudioProcessor(blockchain, encryption_manager)
+
+# Define encryption layers
+layers = [
+    {'method': 'AES', 'key_size': 256},
+    {'method': 'RSA', 'key_size': 2048}
+]
+
+# Process audio file
+block = processor.process_audio_file('input.wav', layers)
+
+# Decrypt audio
+decrypted_data, params = processor.decrypt_audio_block(block)
